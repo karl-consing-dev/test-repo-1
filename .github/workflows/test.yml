@@ -1,0 +1,16 @@
+name: TEST
+
+on:
+  workflow_dispatch:
+
+jobs:
+  secrets-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Valid secret name
+        run: echo ${{ secrets.MY_TEST_SECRET }}
+
+      - name: Invalid secret name
+        run: echo ${{ secrets.DOES_NOT_EXIST }}
